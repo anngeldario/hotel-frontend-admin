@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function crearGraficaReservas() {
-        fetch('http://localhost:4000/api/admin/reservations-chart-data', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/admin/reservations-chart-data', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function cargarEstadisticasAdmin() {
-        fetch('http://localhost:4000/api/admin/dashboard-stats', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/admin/dashboard-stats', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function cargarEstadisticasEmpleado() {
-        fetch('http://localhost:4000/api/employee/dashboard-stats', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/employee/dashboard-stats', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         detallesModalBody.innerHTML = '<p>Cargando detalles...</p>';
         detallesReservaModal.classList.remove('hidden');
 
-        fetch(`http://localhost:4000/api/panel/reservas/${codigo}`, {
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/panel/reservas/${codigo}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // --- ¡ESTA ES LA LÍNEA CORREGIDA! ---
             // Añadimos la dirección completa del servidor.
-            fetch(`http://localhost:4000/api/panel/reservas/${codigoReserva}/estado`, {
+            fetch(`https://hotel-backend-production-ed93.up.railway.app/api/panel/reservas/${codigoReserva}/estado`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tbody = document.getElementById('reservas-table-body');
         tbody.innerHTML = '<tr><td colspan="7" class="text-center p-6">Cargando reservas...</td></tr>';
 
-        fetch('http://localhost:4000/api/panel/reservas', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/panel/reservas', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
         container.innerHTML = '<p>Cargando estado de las habitaciones...</p>';
         const token = localStorage.getItem('adminAuthToken');
 
-        fetch('http://localhost:4000/api/panel/habitaciones', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/panel/habitaciones', {
             headers: { 'Authorization': `Bearer ${token}` }
         })
             .then(res => res.json())
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nuevoEstadoLimpieza = selectLimpieza.value;
         const token = localStorage.getItem('adminAuthToken');
 
-        fetch(`http://localhost:4000/api/panel/habitaciones/${idHabitacion}/estado`, {
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/panel/habitaciones/${idHabitacion}/estado`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function marcarHabitacionComoDisponible(idHabitacion) {
-        fetch(`http://localhost:4000/api/panel/habitaciones/${idHabitacion}/estado`, {
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/panel/habitaciones/${idHabitacion}/estado`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ nuevoEstado: 'Disponible', nuevoEstadoLimpieza: 'Limpia' })
@@ -542,7 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
         goToStep(2);
 
         // Hacemos la llamada al endpoint que ya existe
-        fetch(`http://localhost:4000/api/habitaciones/disponibles?inicio=${nuevaReservaData.fecha_inicio}&fin=${nuevaReservaData.fecha_fin}&huespedes=${huespedes}`)
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/habitaciones/disponibles?inicio=${nuevaReservaData.fecha_inicio}&fin=${nuevaReservaData.fecha_fin}&huespedes=${huespedes}`)
             .then(res => res.json())
             .then(habitaciones => {
                 availableRoomsContainer.innerHTML = '';
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Enviamos todo al endpoint de creación de reservas que ya existe
-        fetch('http://localhost:4000/api/reservas', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/reservas', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(nuevaReservaData),
@@ -629,7 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tbody = document.getElementById('personal-table-body');
         tbody.innerHTML = '<tr><td colspan="4" class="text-center p-6">Cargando personal...</td></tr>';
 
-        fetch('http://localhost:4000/api/admin/personal', { headers: { 'Authorization': `Bearer ${token}` } })
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/admin/personal', { headers: { 'Authorization': `Bearer ${token}` } })
             .then(res => res.json())
             .then(personal => {
                 tbody.innerHTML = '';
@@ -670,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
             puesto: document.getElementById('personal-puesto').value,
             contrasena: document.getElementById('personal-contrasena').value
         };
-        fetch('http://localhost:4000/api/admin/personal', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(nuevoEmpleado) })
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/admin/personal', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(nuevoEmpleado) })
             .then(res => res.json().then(data => ({ status: res.status, body: data })))
             .then(({ status, body }) => {
                 alert(body.mensaje);
@@ -695,7 +695,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.classList.contains('editar-personal-btn')) {
             const id = e.target.dataset.id;
             // Hacemos un fetch para obtener los datos más recientes del empleado
-            fetch(`http://localhost:4000/api/admin/personal/${id}`, { headers: { 'Authorization': `Bearer ${token}` } })
+            fetch(`https://hotel-backend-production-ed93.up.railway.app/api/admin/personal/${id}`, { headers: { 'Authorization': `Bearer ${token}` } })
                 .then(res => res.json())
                 .then(empleado => {
                     // Llenamos el formulario del modal de edición
@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
             puesto: document.getElementById('edit-personal-puesto').value,
         };
 
-        fetch(`http://localhost:4000/api/admin/personal/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(datosActualizados) })
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/admin/personal/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(datosActualizados) })
             .then(res => res.json())
             .then(data => {
                 alert(data.mensaje);
@@ -744,7 +744,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cancelar-baja-btn').addEventListener('click', () => modalBaja.classList.add('hidden'));
     document.getElementById('confirmar-baja-btn').addEventListener('click', (e) => {
         const id = e.target.dataset.id;
-        fetch(`http://localhost:4000/api/admin/personal/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } })
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/admin/personal/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } })
             .then(res => res.json())
             .then(data => {
                 alert(data.mensaje);
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const id = document.getElementById('reset-password-id').value;
         const nuevaContrasena = document.getElementById('new-password').value;
 
-        fetch(`http://localhost:4000/api/admin/personal/${id}/password`, {
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/admin/personal/${id}/password`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ nuevaContrasena })
@@ -863,7 +863,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('reporte-ingresos').textContent = 'Cargando...';
         // ... (resto del código de carga)
 
-        fetch(`http://localhost:4000/api/admin/reportes?inicio=${inicio}&fin=${fin}`, { headers: { 'Authorization': `Bearer ${token}` } })
+        fetch(`https://hotel-backend-production-ed93.up.railway.app/api/admin/reportes?inicio=${inicio}&fin=${fin}`, { headers: { 'Authorization': `Bearer ${token}` } })
             .then(res => res.json())
             .then(data => {
                 const datos = data.reporte;

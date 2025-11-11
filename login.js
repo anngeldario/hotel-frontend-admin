@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         // 1. URL CORREGIDA: Apuntamos a la nueva ruta /api/admin/login
-        fetch('http://localhost:4000/api/admin/login', {
+        fetch('https://hotel-backend-production-ed93.up.railway.app/api/admin/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Hacemos la llamada a nuestro nuevo endpoint del servidor
-    fetch('http://localhost:4000/api/admin/dashboard-stats', {
+    fetch('https://hotel-backend-production-ed93.up.railway.app/api/admin/dashboard-stats', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
