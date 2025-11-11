@@ -17,6 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const userData = parseJwt(token);
     const esAdmin = userData && userData.rol === 'Administrador';
 
+    if (userData) {
+        const adminNameEl = document.getElementById('admin-name');
+        const adminRoleEl = document.getElementById('admin-role');
+
+        if (adminNameEl) {
+            // "userData.nombre" viene del token
+            adminNameEl.textContent = userData.nombre;
+        }
+        if (adminRoleEl) {
+            // "userData.rol" también viene del token
+            adminRoleEl.textContent = userData.rol;
+        }
+    }
+
     if (esAdmin) {
         document.querySelectorAll('.admin-only').forEach(item => {
             item.classList.remove('hidden');
