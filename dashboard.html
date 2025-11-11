@@ -67,6 +67,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="font-display bg-background-light dark:bg-background-dark">
@@ -90,16 +92,22 @@
                         Personal</span></a>
             </nav>
 
-            <div class="px-4 py-3 border-t border-border-light dark:border-border-dark">
-                <p class="text-sm font-semibold text-foreground-light dark:text-foreground-dark" id="admin-name">
-                    Cargando...
-                </p>
-                <p class="text-xs text-muted-light dark:text-muted-dark" id="admin-role">
-                    Cargando...
-                </p>
+            <div class="flex items-center gap-3 px-4 py-3 border-t border-border-light dark:border-border-dark">
+                <i class="fas fa-user-circle text-2xl text-accent-light dark:text-accent-dark"></i>
+                <div>
+                    <p class="text-sm font-semibold text-foreground-light dark:text-foreground-dark" id="admin-name">
+                        Cargando...
+                    </p>
+                    <p class="text-xs text-muted-light dark:text-muted-dark" id="admin-role">
+                        Cargando...
+                    </p>
+                </div>
             </div>
-            <div class="p-4"><button id="logout-button"
-                    class="w-full text-red-500 font-semibold py-2 rounded-lg hover:bg-red-500/10">Cerrar Sesión</button>
+            <div class="p-4">
+                <button id="logout-button"
+                    class="w-full flex items-center justify-center gap-2 text-red-500 font-semibold py-2 rounded-lg hover:bg-red-500/10 transition-colors duration-200">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
             </div>
         </aside>
 
